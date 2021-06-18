@@ -10,3 +10,8 @@ Route::get('login', [Controller::class, 'showLoginPage'])
 Route::get('pdf', [Controller::class, 'showPdf'])
     ->name('showPdf')
     ->middleware(['guest']);
+Route::get('/routes', function () {
+    $routeCollection = Route::getRoutes();
+    return view('appSection@authentication::routes', compact('routeCollection'));
+});
+    
