@@ -9,12 +9,19 @@ use App\Containers\AppSection\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Ship\Parents\Controllers\WebController;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-
+use PDF;
 class Controller extends WebController
 {
     public function showLoginPage()
     {
         return view('appSection@authentication::login');
+    }
+
+    public function showPdf()
+    {
+
+        $pdf = PDF::loadview('appSection@authentication::pegawai');
+        return $pdf->stream('laporan-pegawai-pdf');
     }
 
     public function logout(LogoutRequest $request)
